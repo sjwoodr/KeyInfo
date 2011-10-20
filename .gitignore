@@ -1,0 +1,14 @@
+*~
+*.swp
+*.class
+*.apk
+*.dex
+*.jar
+bin/**/*
+dist/**/*
+gen/**/*
+build/**/*
+bin/*
+gen/*
+dist/*
+build/*
