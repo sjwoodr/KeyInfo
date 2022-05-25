@@ -14,6 +14,14 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+      - name: Save an artifact
+        run: |
+          ls ${{ github.workspace }} > my_output.txt
+      - name: Uplaod an artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: output-file
+          path: my_output.txt
       - run: echo "🍏 This job's status is ${{ job.status }}."
   More-Actions:
     runs-on: ubuntu-latest
@@ -22,5 +30,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '14'
+      - uses: actions/download-artifact@v3
+        with:
+          name: output-file
+      - run: ls ${{ github.workspace }}
       - run: npm install -g bats
       - run: bats -v
+
