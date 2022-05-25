@@ -25,6 +25,7 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
   More-Actions:
     runs-on: ubuntu-latest
+    needs: Explore-GitHub-Actions
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
