@@ -33,10 +33,11 @@ jobs:
       - run: ls ${{ github.workspace }}
       - run: npm install -g bats
       - run: bats -v
-      - name: Get the secret and show it
+      - name: Download artifact
         uses: actions/download-artifact@v3
         with:
           name: output-file
+      - name: Get the secret and show it
         env:
           super_secret: ${{ secrets.MY_SECRET_KEY }}
         run: |
