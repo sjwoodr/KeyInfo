@@ -3,7 +3,6 @@
 *.class
 *.apk
 *.dex
-*.jar
 bin/**/*
 dist/**/*
 gen/**/*
