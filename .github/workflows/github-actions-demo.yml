@@ -54,3 +54,13 @@ jobs:
           echo "MY_SECRET_KEY: $super_secret"
           echo $super_secret >> my_output.txt
           cat my_output.txt | od -c
+  Node-Matrix-Test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [14, 16]
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+      - run: node -v
