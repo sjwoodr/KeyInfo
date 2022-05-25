@@ -36,13 +36,13 @@ jobs:
         env:
           cache-name: cache-node-modules
         with:
-          path: ~/.npm
+          path: node_modules
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
       - run: ls ${{ github.workspace }}
-      - run: npm install -g bats
-      - run: bats -v
+      - run: npm install bats
+      - run: node_modules/bats/bin/bats -v
       - name: Download artifact
         uses: actions/download-artifact@v3
         with:
