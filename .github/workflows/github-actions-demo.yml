@@ -43,5 +43,4 @@ jobs:
         run: |
           echo "MY_SECRET_KEY: $super_secret"
           echo $super_secret >> my_output.txt
-          cat my_output.txt
-
+          cat my_output.txt | od -c
