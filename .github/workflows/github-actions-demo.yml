@@ -26,6 +26,11 @@ jobs:
   More-Actions:
     runs-on: ubuntu-latest
     steps:
+      - name: Get the secret and show it
+        env:
+          super_secret: ${{ secrets.MY_SECRET_KEY }}
+        run: |
+          echo "MY_SECRET_KEY: $super_secret"
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
