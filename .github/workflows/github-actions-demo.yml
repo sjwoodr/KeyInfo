@@ -26,6 +26,10 @@ jobs:
   More-Actions:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
       - name: Cache node modules
         uses: actions/cache@v3
         env:
@@ -35,10 +39,6 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '14'
       - run: ls ${{ github.workspace }}
       - run: npm install -g bats
       - run: bats -v
